@@ -48,6 +48,7 @@ code {
 .logoNavbar{
     font-family: 'Chivo', sans-serif;
     font-size: 30px;
+    text-decoration: none;
 }
 .imgLogo{
     width: 50px;
