@@ -8,6 +8,7 @@ import { NuevoUsuarioComponent } from './components/nuevo-usuario/nuevo-usuario.
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PrincipalComponent } from './components/principal/principal.component';
+import { ComponentesComponent } from './components/componentes/componentes.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PrincipalComponent } from './components/principal/principal.component';
     NuevoUsuarioComponent,
     UsuarioComponent,
     FooterComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    ComponentesComponent
   ],
   imports: [
     BrowserModule,
