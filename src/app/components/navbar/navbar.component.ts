@@ -9,6 +9,8 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
+  public estaLogueado: boolean = false;
+
   ngOnInit() {
   }
 
