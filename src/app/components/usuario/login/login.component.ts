@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth/';
-import {auth} from 'firebase/app';
-import { Router } from '@angular/router';
-import {AuthService} from '../../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,34 +8,18 @@ import {AuthService} from '../../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public afAuth: AngularFireAuth, private router: Router, private authService: AuthService) { }
-public email: string = '';
-public password: string = '';
+  authError: any;
+
+  constructor(private auth: AuthService) { }
+
   ngOnInit() {
+    this.auth.eventAuthError$.subscribe( data => {
+      this.authError = data;
+    });
   }
 
-  onLogin(): void{
-this.authService.loginEmailUser(this.email, this.password)
-.then((res)=>{
-this.onLoginRedirect();
-}).catch(err => console.log('err', err.message));
+  login(frm) {
+    this.auth.login(frm.value.email, frm.value.password);
   }
-
-  onLoginGoogle(): void{
-    //this.afAuth.auth.signInWithPopup( new auth.GoogleAuthProvider);
-    this.authService.loginGoogleUser()
-    .then((res)=>{
-      this.onLoginRedirect();
-    }).catch ( err => console.log('err', err.message));
-
-  }
-  onLogout(){
-    this.authService.logoutUser();
-  }
-
-  onLoginRedirect():void{
-    this.router.navigate(['']);
-  }
-
 
 }
